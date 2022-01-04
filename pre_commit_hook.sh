@@ -1,13 +1,16 @@
-# Note: Rename this file to pre-commit and place it in /.git/hooks/ after cloning the repository to automatically format the code with black before each commit
-
 #!bin/sh
 
-echo ""
+# Note: Rename this file to pre-commit and place it in .git/hooks/ after cloning the repository
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+echo -e "\n""${RED}[Formating Diff]${NC}"
 
 black --diff --color .
 
-echo ""
+echo -e "\n""${RED}[Formating Modifications]${NC}"
 
 black .
 
-echo ""
+echo -e "\n""${RED}[Git Commit Logs]${NC}"
