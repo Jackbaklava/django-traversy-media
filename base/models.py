@@ -9,7 +9,6 @@ class Topic(models.Model):
         return self.name
 
 
-
 class Room(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
@@ -23,8 +22,7 @@ class Room(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['-updated', '-created']
-
+        ordering = ["-updated", "-created"]
 
 
 class Message(models.Model):
