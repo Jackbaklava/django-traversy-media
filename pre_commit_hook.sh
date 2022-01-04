@@ -5,11 +5,11 @@
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "\n""${RED}[Formating Diff]${NC}"
+echo -e "\n""${RED}[Black's Formating Diff]${NC}"
 
 black --diff --color .
 
-echo -e "\n""${RED}[Formating Modifications]${NC}"
+echo -e "\n""${RED}[Black's Formating Modifications]${NC}"
 
 black .
 
