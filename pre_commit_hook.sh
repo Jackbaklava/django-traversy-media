@@ -13,4 +13,5 @@ echo -e "\n""${RED}[Black's Formating Modifications]${NC}"
 
 black .
 
-echo -e "\n""${RED}[Git Commit Logs]${NC}"
+echo -e "\n""${RED}[Staging All Files]${NC}"
+git add .
