@@ -12,6 +12,3 @@ black --diff --color .
 echo -e "\n""${RED}[Black's Formating Modifications]${NC}"
 
 black .
-
-echo -e "\n""${RED}[Staging All Files]${NC}"
-git add .
