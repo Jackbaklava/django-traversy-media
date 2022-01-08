@@ -7,7 +7,7 @@
                 <a href="{% url 'delete-message' message.id %}">Delete</a>
         {% endif %}
 
-        <small>@{{ message.user }} {{ message.created|timesince }} ago</small>
+        <small><a href="{% url 'user-profile' message.user.id %}">@{{ message.user }}</a> {{ message.created|timesince }} ago</small>
         <small>replied to "{{ message.room }}"</small>
         <p>{{ message }}</p>
         <hr>
