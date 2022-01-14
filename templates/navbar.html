@@ -39,7 +39,7 @@
         {% else %}
             <!-- Not Logged In -->
             <a href="{% url 'login' %}">
-                <img src="{% static '/images/avatar.svg' %}" />
+                <img src="{% static 'images/avatar.svg' %}" />
                 <p>Login</p>
             </a>
         {% endif %}
@@ -70,25 +70,3 @@
       </nav>
     </div>
 </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- {% if request.user.is_authenticated %}
-    <p>Hello {{ request.user }}!</p>
-    <a href="{% url 'logout' %}">Logout</a>
-{% else %}
-    <a href="{% url 'login' %}">Login</a>
-{% endif %} -->
