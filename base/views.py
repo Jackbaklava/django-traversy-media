@@ -124,17 +124,25 @@ def user_profile(request, pk):
 @login_required(login_url="login")
 def create_room(request):
     form = RoomForm()
+    topics = Topic.objects.all()
 
     if request.method == "POST":
         form = RoomForm(request.POST)
-        if form.is_valid():
-            room = form.save(commit=False)
-            room.host = request.user
-            room.save()
-            room.participants.add(request.user)
-            return redirect("home")
+        topic_name = request.POST.get("topic")
+        # Creates topic if it doesnt already exists, if it already exists, return the topic object
+        # topic var is always assigned, created is a boolean whether or not topis is new
+        topic, created = Topic.objects.get_or_create(name=topic_name)
 
-    context = {"form": form}
+        new_room = Room.objects.create(
+            host=request.user,
+            topic=topic,
+            name=request.POST.get("name"),
+            description=request.POST.get("description"),
+        )
+        new_room.participants.add(request.user)
+        return redirect("home")
+
+    context = {"form": form, "topics": topics}
     return render(request, "base/room_form.html", context)
 
 
@@ -142,6 +150,7 @@ def create_room(request):
 def update_room(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
+    topics = Topic.objects.all()
 
     if room.host != request.user:
         messages.error(request, "You do not own this room.")
@@ -153,7 +162,7 @@ def update_room(request, pk):
             form.save()
             return redirect("home")
 
-    context = {"form": form}
+    context = {"form": form, "topics": topics}
     return render(request, "base/room_form.html", context)
 
 
